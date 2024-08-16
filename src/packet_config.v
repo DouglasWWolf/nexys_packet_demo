@@ -20,7 +20,7 @@ module packet_config # (parameter AW=8, parameter DEFAULT_INIT_VALUE = 16'h0000)
     output reg[15:0] packet_len,
     
     // How many packets to output
-    output reg[15:0] packet_count,
+    output reg[31:0] packet_count,
     
     // Number of idle clock-cycles between packets
     output reg[15:0] idle_cycles,

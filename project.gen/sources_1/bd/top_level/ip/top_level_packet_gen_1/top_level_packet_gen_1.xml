@@ -302,11 +302,11 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>packet_length</spirit:name>
+        <spirit:name>packet_count</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">15</spirit:left>
+            <spirit:left spirit:format="long">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -318,7 +318,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>packet_count</spirit:name>
+        <spirit:name>packet_length</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>

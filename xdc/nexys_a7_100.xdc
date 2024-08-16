@@ -36,6 +36,14 @@ set_property -dict {PACKAGE_PIN D4  IOSTANDARD LVCMOS33} [get_ports UART_txd]
 #set_property -dict {PACKAGE_PIN U11  IOSTANDARD LVCMOS33} [get_ports { SW[14] }]
 #set_property -dict {PACKAGE_PIN V10  IOSTANDARD LVCMOS33} [get_ports { SW[15] }]
 
+
+## Green Status LEDs
+set_property -dict {PACKAGE_PIN H17  IOSTANDARD LVCMOS33} [get_ports { status_led[0] }]
+set_property -dict {PACKAGE_PIN K15  IOSTANDARD LVCMOS33} [get_ports { status_led[1] }]
+set_property -dict {PACKAGE_PIN J13  IOSTANDARD LVCMOS33} [get_ports { status_led[2] }]
+set_property -dict {PACKAGE_PIN N14  IOSTANDARD LVCMOS33} [get_ports { status_led[3] }]
+
+
 ## LEDs
 #set_property -dict {PACKAGE_PIN H17  IOSTANDARD LVCMOS33} [get_ports { LED[0]  }]
 #set_property -dict {PACKAGE_PIN K15  IOSTANDARD LVCMOS33} [get_ports { LED[1]  }]

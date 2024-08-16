@@ -19,8 +19,8 @@ module packet_gen # (parameter DW=512)
 (
     input   clk, resetn,
 
-    input[15:0] packet_length, packet_count, 
-    input[15:0] idle_cycles, initial_value,
+    input[31:0] packet_count, 
+    input[15:0] packet_length, idle_cycles, initial_value,
 
     // We start generating packets when this is asserted
     input   start,
@@ -86,7 +86,7 @@ assign axis_out_tlast = (cycle == total_data_cycles);
 assign axis_out_tdata = {(DW/16){data}};
 
 // This is the number of the packet currently being emitted
-reg[15:0] packet_number;
+reg[31:0] packet_number;
 
 // The number of clock cycles to pause for
 reg[15:0] delay_count;
