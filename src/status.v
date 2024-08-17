@@ -16,11 +16,12 @@
 */
 
 
-module status
+module status # (parameter ACTIVE_LOW_LED = 0)
 (
     input       clk, resetn,
-    input       ch0_busy, ch1_busy,
-    output[3:0] status_led,
+    input       ch0_busy, eth0_aligned,
+    input       ch1_busy, eth1_aligned,
+    output[3:0] led_green, led_orange,
 
     //================= This is an AXI4-Lite slave interface ==================
         
@@ -102,14 +103,25 @@ localparam ADDR_MASK = 7'h7F;
 wire[1:0] busy_status;
 
 // PCS-alignment status, synchronous to clk
-wire[1:0] qsfp_status = 2'b11;
+wire[1:0] qsfp_status;
 
-// Synchronize eth0_up/eth1_up to 'clk'
-cdc_single i_ch0_cdc(ch0_busy, clk, busy_status[0]);
-cdc_single i_ch1_cdc(ch1_busy, clk, busy_status[1]);
+// Synchornize input signals to our clock
+cdc_single i_ch0_cdc (ch0_busy,     clk, busy_status[0]);
+cdc_single i_ch1_cdc (ch1_busy,     clk, busy_status[1]);
+cdc_single i_eth0_cdc(eth0_aligned, clk, qsfp_status[0]);
+cdc_single i_eth1_cdc(eth1_aligned, clk, qsfp_status[1]);
 
-// Drive the appropriate LEDs to signal the PCS-alignment status
-assign status_led = { 2'b00,  busy_status};
+
+// LEDs 0 and 1 reflect QSFP status, LEDs 2 and 3 reflect "busy" status
+// These LEDs are active-low
+
+if (ACTIVE_LOW_LED) begin
+    assign led_green  = {~busy_status, ~qsfp_status};
+    assign led_orange = {2'b11,         qsfp_status};
+end else begin
+    assign led_green  = {busy_status,   qsfp_status};
+    assign led_orange = {2'b00,        ~qsfp_status};
+end
 
 //==========================================================================
 // This state machine handles AXI4-Lite write requests

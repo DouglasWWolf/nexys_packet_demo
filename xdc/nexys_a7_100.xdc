@@ -18,7 +18,12 @@ set_property -dict {PACKAGE_PIN D4  IOSTANDARD LVCMOS33} [get_ports UART_txd]
 #set_property -dict {PACKAGE_PIN E5  IOSTANDARD LVCMOS33 } [get_ports { UART_RTS }]
 
 
-##Switchess
+## Switches that simulated the status of PCS alignment
+set_property -dict {PACKAGE_PIN J15  IOSTANDARD LVCMOS33} [get_ports eth0_aligned]
+set_property -dict {PACKAGE_PIN L16  IOSTANDARD LVCMOS33} [get_ports eth1_aligned]
+
+
+##Switches
 #set_property -dict {PACKAGE_PIN J15  IOSTANDARD LVCMOS33} [get_ports { SW[0]  }]
 #set_property -dict {PACKAGE_PIN L16  IOSTANDARD LVCMOS33} [get_ports { SW[1]  }]
 #set_property -dict {PACKAGE_PIN M13  IOSTANDARD LVCMOS33} [get_ports { SW[2]  }]

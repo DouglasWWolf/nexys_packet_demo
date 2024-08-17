@@ -1,7 +1,7 @@
 //Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-//Date        : Fri Aug 16 13:53:46 2024
+//Date        : Sat Aug 17 04:59:53 2024
 //Host        : simtool-5 running 64-bit Ubuntu 20.04.6 LTS
 //Command     : generate_target top_level.bd
 //Design      : top_level
@@ -329,6 +329,112 @@ module channel_1_imp_1R4OFYV
         .start(packet_config_start));
 endmodule
 
+module data_consumer_0_imp_1NF301Q
+   (axis_in_tdata,
+    axis_in_tkeep,
+    axis_in_tlast,
+    axis_in_tready,
+    axis_in_tvalid,
+    clk,
+    resetn);
+  input [511:0]axis_in_tdata;
+  input [63:0]axis_in_tkeep;
+  input axis_in_tlast;
+  output axis_in_tready;
+  input axis_in_tvalid;
+  input clk;
+  input resetn;
+
+  (* CONN_BUS_INFO = "packet_gen_axis_out xilinx.com:interface:axis:1.0 None TDATA" *) (* DONT_TOUCH *) wire [511:0]packet_gen_axis_out_TDATA;
+  (* CONN_BUS_INFO = "packet_gen_axis_out xilinx.com:interface:axis:1.0 None TKEEP" *) (* DONT_TOUCH *) wire [63:0]packet_gen_axis_out_TKEEP;
+  (* CONN_BUS_INFO = "packet_gen_axis_out xilinx.com:interface:axis:1.0 None TLAST" *) (* DONT_TOUCH *) wire packet_gen_axis_out_TLAST;
+  (* CONN_BUS_INFO = "packet_gen_axis_out xilinx.com:interface:axis:1.0 None TREADY" *) (* DONT_TOUCH *) wire packet_gen_axis_out_TREADY;
+  (* CONN_BUS_INFO = "packet_gen_axis_out xilinx.com:interface:axis:1.0 None TVALID" *) (* DONT_TOUCH *) wire packet_gen_axis_out_TVALID;
+  wire source_100mhz_sys_clk;
+  wire source_100mhz_sys_resetn;
+
+  assign axis_in_tready = packet_gen_axis_out_TREADY;
+  assign packet_gen_axis_out_TDATA = axis_in_tdata[511:0];
+  assign packet_gen_axis_out_TKEEP = axis_in_tkeep[63:0];
+  assign packet_gen_axis_out_TLAST = axis_in_tlast;
+  assign packet_gen_axis_out_TVALID = axis_in_tvalid;
+  assign source_100mhz_sys_clk = clk;
+  assign source_100mhz_sys_resetn = resetn;
+  top_level_data_consumer_0_0 data_consumer_0
+       (.AXIS_RX_TDATA(packet_gen_axis_out_TDATA),
+        .AXIS_RX_TKEEP(packet_gen_axis_out_TKEEP),
+        .AXIS_RX_TLAST(packet_gen_axis_out_TLAST),
+        .AXIS_RX_TREADY(packet_gen_axis_out_TREADY),
+        .AXIS_RX_TVALID(packet_gen_axis_out_TVALID),
+        .clk(source_100mhz_sys_clk),
+        .resetn(source_100mhz_sys_resetn));
+  top_level_system_ila_0_0 system_ila_0
+       (.SLOT_0_AXIS_tdata(packet_gen_axis_out_TDATA[0]),
+        .SLOT_0_AXIS_tdest(1'b0),
+        .SLOT_0_AXIS_tid(1'b0),
+        .SLOT_0_AXIS_tkeep(packet_gen_axis_out_TKEEP[0]),
+        .SLOT_0_AXIS_tlast(packet_gen_axis_out_TLAST),
+        .SLOT_0_AXIS_tready(packet_gen_axis_out_TREADY),
+        .SLOT_0_AXIS_tstrb(1'b1),
+        .SLOT_0_AXIS_tuser(1'b0),
+        .SLOT_0_AXIS_tvalid(packet_gen_axis_out_TVALID),
+        .clk(source_100mhz_sys_clk),
+        .resetn(1'b0));
+endmodule
+
+module data_consumer_1_imp_G29F40
+   (axis_in_tdata,
+    axis_in_tkeep,
+    axis_in_tlast,
+    axis_in_tready,
+    axis_in_tvalid,
+    clk,
+    resetn);
+  input [511:0]axis_in_tdata;
+  input [63:0]axis_in_tkeep;
+  input axis_in_tlast;
+  output axis_in_tready;
+  input axis_in_tvalid;
+  input clk;
+  input resetn;
+
+  (* CONN_BUS_INFO = "channel_1_axis_out xilinx.com:interface:axis:1.0 None TDATA" *) (* DONT_TOUCH *) wire [511:0]channel_1_axis_out_TDATA;
+  (* CONN_BUS_INFO = "channel_1_axis_out xilinx.com:interface:axis:1.0 None TKEEP" *) (* DONT_TOUCH *) wire [63:0]channel_1_axis_out_TKEEP;
+  (* CONN_BUS_INFO = "channel_1_axis_out xilinx.com:interface:axis:1.0 None TLAST" *) (* DONT_TOUCH *) wire channel_1_axis_out_TLAST;
+  (* CONN_BUS_INFO = "channel_1_axis_out xilinx.com:interface:axis:1.0 None TREADY" *) (* DONT_TOUCH *) wire channel_1_axis_out_TREADY;
+  (* CONN_BUS_INFO = "channel_1_axis_out xilinx.com:interface:axis:1.0 None TVALID" *) (* DONT_TOUCH *) wire channel_1_axis_out_TVALID;
+  wire source_100mhz_sys_clk;
+  wire source_100mhz_sys_resetn;
+
+  assign axis_in_tready = channel_1_axis_out_TREADY;
+  assign channel_1_axis_out_TDATA = axis_in_tdata[511:0];
+  assign channel_1_axis_out_TKEEP = axis_in_tkeep[63:0];
+  assign channel_1_axis_out_TLAST = axis_in_tlast;
+  assign channel_1_axis_out_TVALID = axis_in_tvalid;
+  assign source_100mhz_sys_clk = clk;
+  assign source_100mhz_sys_resetn = resetn;
+  top_level_data_consumer_1 data_consumer_1
+       (.AXIS_RX_TDATA(channel_1_axis_out_TDATA),
+        .AXIS_RX_TKEEP(channel_1_axis_out_TKEEP),
+        .AXIS_RX_TLAST(channel_1_axis_out_TLAST),
+        .AXIS_RX_TREADY(channel_1_axis_out_TREADY),
+        .AXIS_RX_TVALID(channel_1_axis_out_TVALID),
+        .clk(source_100mhz_sys_clk),
+        .resetn(source_100mhz_sys_resetn));
+  top_level_system_ila_0_1 system_ila_1
+       (.SLOT_0_AXIS_tdata(channel_1_axis_out_TDATA[0]),
+        .SLOT_0_AXIS_tdest(1'b0),
+        .SLOT_0_AXIS_tid(1'b0),
+        .SLOT_0_AXIS_tkeep(channel_1_axis_out_TKEEP[0]),
+        .SLOT_0_AXIS_tlast(channel_1_axis_out_TLAST),
+        .SLOT_0_AXIS_tready(channel_1_axis_out_TREADY),
+        .SLOT_0_AXIS_tstrb(1'b1),
+        .SLOT_0_AXIS_tuser(1'b0),
+        .SLOT_0_AXIS_tvalid(channel_1_axis_out_TVALID),
+        .clk(source_100mhz_sys_clk),
+        .resetn(1'b0));
+endmodule
+
 module source_50mhz_imp_1DU1HTR
    (clk_in,
     resetn_in,
@@ -360,35 +466,41 @@ module source_50mhz_imp_1DU1HTR
         .slowest_sync_clk(system_clock_clk_100mhz));
 endmodule
 
-(* CORE_GENERATION_INFO = "top_level,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top_level,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=19,numReposBlks=15,numNonXlnxBlks=0,numHierBlks=4,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=9,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "top_level.hwdef" *) 
+(* CORE_GENERATION_INFO = "top_level,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top_level,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=21,numReposBlks=15,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=9,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "top_level.hwdef" *) 
 module top_level
    (CLK100MHZ,
     CPU_RESETN,
     UART_rxd,
     UART_txd,
+    eth0_aligned,
+    eth1_aligned,
     status_led);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK100MHZ CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK100MHZ, CLK_DOMAIN top_level_CLK100MHZ, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input CLK100MHZ;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.CPU_RESETN RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.CPU_RESETN, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) input CPU_RESETN;
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART RxD" *) input UART_rxd;
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART TxD" *) output UART_txd;
+  input eth0_aligned;
+  input eth1_aligned;
   output [3:0]status_led;
 
   wire axi_uartlite_UART_RxD;
   wire axi_uartlite_UART_TxD;
   wire channel_0_busy;
-  (* CONN_BUS_INFO = "channel_1_axis_out xilinx.com:interface:axis:1.0 None TDATA" *) (* DONT_TOUCH *) wire [511:0]channel_1_axis_out_TDATA;
-  (* CONN_BUS_INFO = "channel_1_axis_out xilinx.com:interface:axis:1.0 None TKEEP" *) (* DONT_TOUCH *) wire [63:0]channel_1_axis_out_TKEEP;
-  (* CONN_BUS_INFO = "channel_1_axis_out xilinx.com:interface:axis:1.0 None TLAST" *) (* DONT_TOUCH *) wire channel_1_axis_out_TLAST;
-  (* CONN_BUS_INFO = "channel_1_axis_out xilinx.com:interface:axis:1.0 None TREADY" *) (* DONT_TOUCH *) wire channel_1_axis_out_TREADY;
-  (* CONN_BUS_INFO = "channel_1_axis_out xilinx.com:interface:axis:1.0 None TVALID" *) (* DONT_TOUCH *) wire channel_1_axis_out_TVALID;
+  wire [511:0]channel_1_axis_out_TDATA;
+  wire [63:0]channel_1_axis_out_TKEEP;
+  wire channel_1_axis_out_TLAST;
+  wire channel_1_axis_out_TREADY;
+  wire channel_1_axis_out_TVALID;
   wire channel_1_busy;
   wire clk_in1_0_1;
+  wire eth0_aligned_1;
+  wire eth1_aligned_1;
   wire ext_reset_in_0_1;
-  (* CONN_BUS_INFO = "packet_gen_axis_out xilinx.com:interface:axis:1.0 None TDATA" *) (* DONT_TOUCH *) wire [511:0]packet_gen_axis_out_TDATA;
-  (* CONN_BUS_INFO = "packet_gen_axis_out xilinx.com:interface:axis:1.0 None TKEEP" *) (* DONT_TOUCH *) wire [63:0]packet_gen_axis_out_TKEEP;
-  (* CONN_BUS_INFO = "packet_gen_axis_out xilinx.com:interface:axis:1.0 None TLAST" *) (* DONT_TOUCH *) wire packet_gen_axis_out_TLAST;
-  (* CONN_BUS_INFO = "packet_gen_axis_out xilinx.com:interface:axis:1.0 None TREADY" *) (* DONT_TOUCH *) wire packet_gen_axis_out_TREADY;
-  (* CONN_BUS_INFO = "packet_gen_axis_out xilinx.com:interface:axis:1.0 None TVALID" *) (* DONT_TOUCH *) wire packet_gen_axis_out_TVALID;
+  wire [511:0]packet_gen_axis_out_TDATA;
+  wire [63:0]packet_gen_axis_out_TKEEP;
+  wire packet_gen_axis_out_TLAST;
+  wire packet_gen_axis_out_TREADY;
+  wire packet_gen_axis_out_TVALID;
   wire source_100mhz_sys_clk;
   wire [0:0]source_100mhz_sys_resetn;
   wire [3:0]status_0_status_led;
@@ -489,6 +601,8 @@ module top_level
   assign UART_txd = axi_uartlite_UART_TxD;
   assign axi_uartlite_UART_RxD = UART_rxd;
   assign clk_in1_0_1 = CLK100MHZ;
+  assign eth0_aligned_1 = eth0_aligned;
+  assign eth1_aligned_1 = eth1_aligned;
   assign ext_reset_in_0_1 = CPU_RESETN;
   assign status_led[3:0] = status_0_status_led;
   top_level_axi_revision_0_0 axi_revision
@@ -569,20 +683,20 @@ module top_level
         .busy(channel_1_busy),
         .clk(source_100mhz_sys_clk),
         .resetn(source_100mhz_sys_resetn));
-  top_level_data_consumer_0_0 data_consumer_0
-       (.AXIS_RX_TDATA(packet_gen_axis_out_TDATA),
-        .AXIS_RX_TKEEP(packet_gen_axis_out_TKEEP),
-        .AXIS_RX_TLAST(packet_gen_axis_out_TLAST),
-        .AXIS_RX_TREADY(packet_gen_axis_out_TREADY),
-        .AXIS_RX_TVALID(packet_gen_axis_out_TVALID),
+  data_consumer_0_imp_1NF301Q data_consumer_0
+       (.axis_in_tdata(packet_gen_axis_out_TDATA),
+        .axis_in_tkeep(packet_gen_axis_out_TKEEP),
+        .axis_in_tlast(packet_gen_axis_out_TLAST),
+        .axis_in_tready(packet_gen_axis_out_TREADY),
+        .axis_in_tvalid(packet_gen_axis_out_TVALID),
         .clk(source_100mhz_sys_clk),
         .resetn(source_100mhz_sys_resetn));
-  top_level_data_consumer_1 data_consumer_1
-       (.AXIS_RX_TDATA(channel_1_axis_out_TDATA),
-        .AXIS_RX_TKEEP(channel_1_axis_out_TKEEP),
-        .AXIS_RX_TLAST(channel_1_axis_out_TLAST),
-        .AXIS_RX_TREADY(channel_1_axis_out_TREADY),
-        .AXIS_RX_TVALID(channel_1_axis_out_TVALID),
+  data_consumer_1_imp_G29F40 data_consumer_1
+       (.axis_in_tdata(channel_1_axis_out_TDATA),
+        .axis_in_tkeep(channel_1_axis_out_TKEEP),
+        .axis_in_tlast(channel_1_axis_out_TLAST),
+        .axis_in_tready(channel_1_axis_out_TREADY),
+        .axis_in_tvalid(channel_1_axis_out_TVALID),
         .clk(source_100mhz_sys_clk),
         .resetn(source_100mhz_sys_resetn));
   source_50mhz_imp_1DU1HTR source_50mhz
@@ -613,32 +727,10 @@ module top_level
         .ch0_busy(channel_0_busy),
         .ch1_busy(channel_1_busy),
         .clk(source_100mhz_sys_clk),
-        .resetn(source_100mhz_sys_resetn),
-        .status_led(status_0_status_led));
-  top_level_system_ila_0_0 system_ila_0
-       (.SLOT_0_AXIS_tdata(packet_gen_axis_out_TDATA[0]),
-        .SLOT_0_AXIS_tdest(1'b0),
-        .SLOT_0_AXIS_tid(1'b0),
-        .SLOT_0_AXIS_tkeep(packet_gen_axis_out_TKEEP[0]),
-        .SLOT_0_AXIS_tlast(packet_gen_axis_out_TLAST),
-        .SLOT_0_AXIS_tready(packet_gen_axis_out_TREADY),
-        .SLOT_0_AXIS_tstrb(1'b1),
-        .SLOT_0_AXIS_tuser(1'b0),
-        .SLOT_0_AXIS_tvalid(packet_gen_axis_out_TVALID),
-        .clk(source_100mhz_sys_clk),
-        .resetn(1'b0));
-  top_level_system_ila_0_1 system_ila_1
-       (.SLOT_0_AXIS_tdata(channel_1_axis_out_TDATA[0]),
-        .SLOT_0_AXIS_tdest(1'b0),
-        .SLOT_0_AXIS_tid(1'b0),
-        .SLOT_0_AXIS_tkeep(channel_1_axis_out_TKEEP[0]),
-        .SLOT_0_AXIS_tlast(channel_1_axis_out_TLAST),
-        .SLOT_0_AXIS_tready(channel_1_axis_out_TREADY),
-        .SLOT_0_AXIS_tstrb(1'b1),
-        .SLOT_0_AXIS_tuser(1'b0),
-        .SLOT_0_AXIS_tvalid(channel_1_axis_out_TVALID),
-        .clk(source_100mhz_sys_clk),
-        .resetn(1'b0));
+        .eth0_aligned(eth0_aligned_1),
+        .eth1_aligned(eth1_aligned_1),
+        .led_green(status_0_status_led),
+        .resetn(source_100mhz_sys_resetn));
   top_level_smartconnect_0_0 system_interconnect
        (.M00_AXI_araddr(system_interconnect_M00_AXI_ARADDR),
         .M00_AXI_arprot(system_interconnect_M00_AXI_ARPROT),
