@@ -1,8 +1,8 @@
 //Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-//Date        : Sat Aug 17 04:59:53 2024
-//Host        : simtool-5 running 64-bit Ubuntu 20.04.6 LTS
+//Date        : Sat Nov  1 16:52:39 2025
+//Host        : wolf-super-server running 64-bit Ubuntu 20.04.6 LTS
 //Command     : generate_target top_level.bd
 //Design      : top_level
 //Purpose     : IP block netlist
@@ -126,11 +126,11 @@ module channel_0_imp_3EIWA1
   assign system_interconnect_M01_AXI_WSTRB = S_AXI_wstrb[0];
   assign system_interconnect_M01_AXI_WVALID = S_AXI_wvalid;
   top_level_packet_config_0_0 packet_config
-       (.S_AXI_ARADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,system_interconnect_M01_AXI_ARADDR}),
+       (.S_AXI_ARADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,system_interconnect_M01_AXI_ARADDR}),
         .S_AXI_ARPROT(system_interconnect_M01_AXI_ARPROT),
         .S_AXI_ARREADY(system_interconnect_M01_AXI_ARREADY),
         .S_AXI_ARVALID(system_interconnect_M01_AXI_ARVALID),
-        .S_AXI_AWADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,system_interconnect_M01_AXI_AWADDR}),
+        .S_AXI_AWADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,system_interconnect_M01_AXI_AWADDR}),
         .S_AXI_AWPROT(system_interconnect_M01_AXI_AWPROT),
         .S_AXI_AWREADY(system_interconnect_M01_AXI_AWREADY),
         .S_AXI_AWVALID(system_interconnect_M01_AXI_AWVALID),
@@ -286,11 +286,11 @@ module channel_1_imp_1R4OFYV
   assign system_interconnect_M01_AXI_WSTRB = S_AXI_wstrb[0];
   assign system_interconnect_M01_AXI_WVALID = S_AXI_wvalid;
   top_level_packet_config_1 packet_config
-       (.S_AXI_ARADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,system_interconnect_M01_AXI_ARADDR}),
+       (.S_AXI_ARADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,system_interconnect_M01_AXI_ARADDR}),
         .S_AXI_ARPROT(system_interconnect_M01_AXI_ARPROT),
         .S_AXI_ARREADY(system_interconnect_M01_AXI_ARREADY),
         .S_AXI_ARVALID(system_interconnect_M01_AXI_ARVALID),
-        .S_AXI_AWADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,system_interconnect_M01_AXI_AWADDR}),
+        .S_AXI_AWADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,system_interconnect_M01_AXI_AWADDR}),
         .S_AXI_AWPROT(system_interconnect_M01_AXI_AWPROT),
         .S_AXI_AWREADY(system_interconnect_M01_AXI_AWREADY),
         .S_AXI_AWVALID(system_interconnect_M01_AXI_AWVALID),
@@ -705,11 +705,11 @@ module top_level
         .sys_clk(source_100mhz_sys_clk),
         .sys_resetn(source_100mhz_sys_resetn));
   top_level_status_0_0 status_reporter
-       (.S_AXI_ARADDR({system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR}),
+       (.S_AXI_ARADDR({system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR,system_interconnect_M03_AXI_ARADDR}),
         .S_AXI_ARPROT(system_interconnect_M03_AXI_ARPROT),
         .S_AXI_ARREADY(system_interconnect_M03_AXI_ARREADY),
         .S_AXI_ARVALID(system_interconnect_M03_AXI_ARVALID),
-        .S_AXI_AWADDR({system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR}),
+        .S_AXI_AWADDR({system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR,system_interconnect_M03_AXI_AWADDR}),
         .S_AXI_AWPROT(system_interconnect_M03_AXI_AWPROT),
         .S_AXI_AWREADY(system_interconnect_M03_AXI_AWREADY),
         .S_AXI_AWVALID(system_interconnect_M03_AXI_AWVALID),
